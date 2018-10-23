@@ -12,10 +12,14 @@ import frontEnd
 
 # Run from the terminal with "python examples.py"
 
+# Star party date and local time (Default location is Victoria; make sure the time zone offset from GMT is correct!)
+date = '10/22/2018'
+time = '05:30:00 PM -7'
+
+MAGNITUDE_LIMIT = 15
+
 def ex1():
     """First example."""
-    # Star party date and local time (Default location is Victoria; make sure the time zone offset from GMT is correct!)
-    date = '06/30/2018'
     # Query US Naval Observatory for sidereal time
     st = pops.getSiderealTime(date)
     print("Local sidereal time on {} is {}".format(date, st.hms))
@@ -34,7 +38,7 @@ def ex2():
     # Get RA and Dec for the Ring Nebula
     ra, dec = pops.getRaDec('Ring Nebula')
     # Get sidereal time for 10:45pm, June 6th
-    st = pops.getSiderealTime('06/30/2018', time='05:30:00 PM -7')
+    st = pops.getSiderealTime(date, time=time)
     # Get hour angle of the Ring Nebula
     ha = pops.getHourAngle(ra, st)
     print("Hour angle of the ring nebula is: {} .".format(ha.hms))
@@ -58,14 +62,11 @@ def ex3():
 def ex4():
     """Given an observing date and time, find the available NGC/IC objects.
     """
-    MAGNITUDE_LIMIT = 15
 
     # Get the sidereal time
     # Star party date and local time (Default location is Victoria; the star party takes place while it is already Sunday
-    # In Greenwich, so query for the Sunday
-    date = '09/02/2018'
     # Query US Naval Observatory for sidereal time
-    st = pops.getSiderealTime(date)
+    st = pops.getSiderealTime(date, time=time)
     print("Local sidereal time on {} is {}".format(date, st.hms))
 
     # Given a sidereal time, we can set rough guesses of targets that will and won't be available.
