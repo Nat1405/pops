@@ -12,16 +12,16 @@ OBSERVING_PERIOD = 1
 class SafeZone(object):
     def __init__(self):
         self.safe_zone = np.array([ [0, -20],
-                [6, 10],
-                [6, 90],
+                [91.24, 10],
+                [91.24, 90],
                 [0, 90],
                 [0, 60],
-                [-4, 40],
-                [-5, 40],
-                [-4, 10],
-                [-3.5, 5],
-                [-3,0],
-                [-1,-10]])
+                [-60.83, 40],
+                [-76, 40],
+                [-60.83, 10],
+                [-45.6, 5],
+                [-45.6,0],
+                [-15.2,-10]])
 
 def plot(coordinates, names):
     """Plot the available targets in hour angle, declination space

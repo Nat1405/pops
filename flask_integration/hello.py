@@ -1,19 +1,14 @@
-from flask import Flask, url_for
-
+from flask import Flask, request, jsonify
 app = Flask(__name__)
 
-from flask import request
+
+safeZone = {safeZone: [ [2.29452158, 59.14978110], [10.12683778, 56.53733116], [14.1772154, 60.7167403], [21.45396446, 60.23528403], [28.59885697, 63.67010079] ]}
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        return do_the_login()
-    else:
-        return show_the_login_form()
+@app.route('/')
+def hello_world():
+    return 'Hey there!'
 
-def do_the_login():
-   return 'Logged in!'
-
-def show_the_login_form():
-   return 'Login form:'
+@app.route('/planning')
+def planning():
+    return jsonify(safeZone)
